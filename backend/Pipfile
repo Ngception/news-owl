@@ -8,6 +8,9 @@ pylint = "*"
 
 [packages]
 flask = "*"
+requests = "*"
+newsapi-python = "*"
+flask-cors = "*"
 
 [requires]
 python_version = "3.7"
