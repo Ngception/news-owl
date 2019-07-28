@@ -1,3 +1,3 @@
 <div class="container main">
-    <a routerLink="/" *ngFor="let category of categories">{{ category }}</a>
+    <a [routerLink]="['/articles']" [queryParams]="{ type: category }" [state]="{ type: category }" *ngFor="let category of categories">{{ category }}</a>
   </div>
