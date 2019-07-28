@@ -12,15 +12,15 @@ export class ArticlePageComponent implements OnInit {
   constructor(private localStorage: LocalStorageService) { }
 
   ngOnInit() {
-    const localData = this.localStorage.fetchData('article');
-    if (localData) {
-      this.article = JSON.parse(localData);
+    const localData = JSON.parse(this.localStorage.fetchData('article'));
+    const dataFromParent = history.state.data;
+    if (!dataFromParent) {
+      this.article = localData;
     } else {
-      this.localStorage.addData('article', JSON.stringify(this.article));
+      this.localStorage.addData('article', JSON.stringify(dataFromParent));
     }
   }
 
   ngOnDestroy() {
-
   }
 }
