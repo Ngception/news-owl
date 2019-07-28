@@ -10,6 +10,7 @@ import { ArticlesComponent } from './articles/articles.component';
 import { ArticleItemComponent } from './articles/article-item/article-item.component';
 import { ArticlePageComponent } from './articles/article-page/article-page.component';
 import { RouterModule } from '@angular/router';
+import { CategoryComponent } from './header/category/category.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { RouterModule } from '@angular/router';
     HeaderComponent,
     ArticlesComponent,
     ArticleItemComponent,
-    ArticlePageComponent
+    ArticlePageComponent,
+    CategoryComponent
   ],
   imports: [
     BrowserModule,
