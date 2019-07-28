@@ -1,0 +1,26 @@
+.main {
+  display: flex;
+  align-items: flex-start;
+  color: white;
+  margin-top: 2.5%;
+}
+
+a:link, a:visited {
+  color: white;
+}
+
+a {
+  text-decoration: none;
+}
+
+a:hover {
+  opacity: 0.7
+}
+
+.item-text {
+  margin-left: 5%;
+}
+
+img {
+  width: 20%
+}
