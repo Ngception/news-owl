@@ -8,4 +8,8 @@ export class ArticlesService {
   fetchAllArticles() {
     return this.http.get<{articles: Object[], status: String, totalresults: Number}>('http://localhost:5000');
   }
+
+  fetchArticleType(type: String) {
+    return this.http.get<{articles: Object[], status: String, totalresults: Number}>(`http://localhost:5000/${type}`);
+  }
 }
