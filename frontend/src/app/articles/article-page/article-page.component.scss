@@ -8,3 +8,12 @@ img {
   margin: 0 auto;
 }
 
+.article-text {
+  margin-top: 2.5%;
+}
+
+@media only screen and (min-width: 845px) {
+  .main {
+    width: 60vw;
+  }
+}

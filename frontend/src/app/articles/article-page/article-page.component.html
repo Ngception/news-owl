@@ -1,7 +1,7 @@
 <div class="container main">
   <h2>{{ article.title }}</h2>
-  <p class="text-muted">by {{ article.author }}</p>
+  <p class="text-muted"> {{ article.source.name }}</p>
     <img [src]="article.urlToImage" alt="img" />
-    <p>{{ article.content }}</p>
+    <p class="article-text">{{ article.content }}</p>
     <p>Source: {{ article.url }}</p>
 </div>
