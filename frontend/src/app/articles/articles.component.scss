@@ -6,14 +6,21 @@
 
 img {
   opacity: 0.5;
-  padding: 1% 0;
+  margin: -10% 0;
 }
 
 .carousel-item {
   width: 100%;
-  height: 250px;
+  height: 275px;
 }
 
 .article-items {
   margin: 0 auto;
+}
+
+@media only screen and (max-width: 845px) {
+  img {
+    margin: 0;
+    padding: 1% 0;
+  }
 }
