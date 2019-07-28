@@ -8,7 +8,7 @@ newsapi = NewsApiClient(api_key=NEWS_API)
 
 @app.route('/')
 def fetch_articles():
-    top_headlines = newsapi.get_top_headlines(language='en')
+    top_headlines = newsapi.get_top_headlines(language='en', country='us')
     return top_headlines
 
 @app.route('/<string:type>')
