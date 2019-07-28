@@ -6,16 +6,17 @@
 
 img {
   opacity: 0.5;
-  margin: -10% 0;
+  margin: -12.5% 0;
 }
 
 .carousel-item {
   width: 100%;
-  height: 275px;
+  height: 300px;
 }
 
 .article-items {
   margin: 0 auto;
+  width: 75%;
 }
 
 a {
@@ -28,8 +29,17 @@ a:hover {
 }
 
 @media only screen and (max-width: 845px) {
+  .carousel-item {
+    width: 100%;
+    height: 250px;
+  }
+
   img {
-    margin: 0;
-    padding: 1% 0;
+    margin: 5% 0;
+  }
+
+  .article-items {
+    margin: 0 auto;
+    width: 100%;
   }
 }
