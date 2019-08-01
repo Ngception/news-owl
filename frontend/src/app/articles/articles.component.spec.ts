@@ -1,6 +1,9 @@
+import { HttpClientModule } from '@angular/common/http';
+import { ArticleItemComponent } from './article-item/article-item.component';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ArticlesComponent } from './articles.component';
+import { RouterTestingModule } from '@angular/router/testing';
 
 describe('ArticlesComponent', () => {
   let component: ArticlesComponent;
@@ -8,7 +11,8 @@ describe('ArticlesComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ArticlesComponent ]
+      imports: [ RouterTestingModule, HttpClientModule ],
+      declarations: [ ArticlesComponent, ArticleItemComponent ]
     })
     .compileComponents();
   }));
@@ -19,7 +23,7 @@ describe('ArticlesComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it('should create articles list', () => {
     expect(component).toBeTruthy();
   });
 });

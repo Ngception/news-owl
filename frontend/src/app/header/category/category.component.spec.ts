@@ -1,6 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { CategoryComponent } from './category.component';
+import { RouterTestingModule } from '@angular/router/testing';
 
 describe('CategoryComponent', () => {
   let component: CategoryComponent;
@@ -8,6 +9,7 @@ describe('CategoryComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
+      imports: [ RouterTestingModule ],
       declarations: [ CategoryComponent ]
     })
     .compileComponents();
@@ -19,7 +21,7 @@ describe('CategoryComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it('should create category list', () => {
     expect(component).toBeTruthy();
   });
 });

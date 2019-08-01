@@ -1,3 +1,6 @@
+import { LocalStorageService } from './../../shared/local-storage.service';
+import { HttpClientModule } from '@angular/common/http';
+import { ArticlesService } from './../articles.service';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ArticlePageComponent } from './article-page.component';
@@ -8,7 +11,9 @@ describe('ArticlePageComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ArticlePageComponent ]
+      imports: [ HttpClientModule ],
+      declarations: [ ArticlePageComponent ],
+      providers: [ ArticlesService, LocalStorageService ]
     })
     .compileComponents();
   }));
@@ -19,7 +24,7 @@ describe('ArticlePageComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it('should create article page', () => {
     expect(component).toBeTruthy();
   });
 });
