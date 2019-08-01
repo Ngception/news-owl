@@ -1,5 +1,6 @@
 <div class="main">
-  <img [src]="article.urlToImage" alt="img" />
+  <img *ngIf="article.urlToImage; else placeholder" [src]="article.urlToImage" alt="img" />
+  <ng-template #placeholder><img src="https://semantic-ui.com/images/wireframe/square-image.png" alt="img" /></ng-template>
   <div class="item-text">
     <a [routerLink]="['/articles', id]" [state]="{ data: article }">{{ article.title }}</a>
     <p class="text-secondary">{{ article.source.name }}</p>
