@@ -9,7 +9,15 @@ export class ArticlesService {
     return this.http.get<{articles: Object[], status: String, totalresults: Number}>('http://localhost:5000');
   }
 
-  fetchArticleType(type: String) {
-    return this.http.get<{articles: Object[], status: String, totalresults: Number}>(`http://localhost:5000/${type}`);
+  fetchArticlesByType(type: String) {
+    return this.http.get<{articles: Object[], status: String, totalresults: Number}>(`http://localhost:5000/categories/${type}`);
+  }
+
+  fetchArticlesBySource(source: String) {
+    return this.http.get<{articles: Object[]}>(`http://localhost:5000/sources/${source}`);
+  }
+
+  fetchArticleData(url: String) {
+    return this.http.post<{title: String, content: String[]}>('http://localhost:5000/articles/scrape', { url });
   }
 }
