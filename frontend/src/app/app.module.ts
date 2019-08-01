@@ -1,3 +1,4 @@
+import { ArticlesService } from './articles/articles.service';
 import { LocalStorageService } from './shared/local-storage.service';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserModule } from '@angular/platform-browser';
@@ -11,6 +12,7 @@ import { ArticleItemComponent } from './articles/article-item/article-item.compo
 import { ArticlePageComponent } from './articles/article-page/article-page.component';
 import { RouterModule } from '@angular/router';
 import { CategoryComponent } from './header/category/category.component';
+import { SourcesComponent } from './header/sources/sources.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +21,8 @@ import { CategoryComponent } from './header/category/category.component';
     ArticlesComponent,
     ArticleItemComponent,
     ArticlePageComponent,
-    CategoryComponent
+    CategoryComponent,
+    SourcesComponent
   ],
   imports: [
     BrowserModule,
@@ -27,7 +30,7 @@ import { CategoryComponent } from './header/category/category.component';
     RouterModule,
     HttpClientModule
   ],
-  providers: [LocalStorageService],
+  providers: [ArticlesService, LocalStorageService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
