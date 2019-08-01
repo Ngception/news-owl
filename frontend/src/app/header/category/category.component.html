@@ -1,3 +1,5 @@
 <div class="container main">
-    <a [routerLink]="['/articles']" [queryParams]="{ type: category }" [state]="{ type: category }" *ngFor="let category of categories">{{ category }}</a>
-  </div>
+  <a *ngFor="let category of categories"
+    [routerLink]="['/articles']"
+    [queryParams]="{ category: category }">{{ category }}</a>
+</div>
