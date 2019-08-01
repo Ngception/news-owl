@@ -1,6 +1,7 @@
+import { ArticlesService } from './../articles.service';
 import { LocalStorageService } from './../../shared/local-storage.service';
 import { Article } from './../../shared/article.model';
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-article-page',
@@ -9,18 +10,24 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 })
 export class ArticlePageComponent implements OnInit {
   article: Article = history.state.data;
-  constructor(private localStorage: LocalStorageService) { }
+  articleContent;
+  constructor(private articles: ArticlesService, private localStorage: LocalStorageService) { }
 
   ngOnInit() {
     const localData = JSON.parse(this.localStorage.fetchData('article'));
     const dataFromParent = history.state.data;
-    if (!dataFromParent) {
+    if (!dataFromParent || dataFromParent.title == localData.title) {
       this.article = localData;
+      this.articleContent = localData.content;
     } else {
-      this.localStorage.addData('article', JSON.stringify(dataFromParent));
+      this.articles.fetchArticleData(dataFromParent.url)
+        .subscribe(res => {
+          this.articleContent = res.content;
+          this.localStorage.addData('article', JSON.stringify({
+            ...dataFromParent,
+            content: this.articleContent
+          }));
+        })
     }
-  }
-
-  ngOnDestroy() {
   }
 }
