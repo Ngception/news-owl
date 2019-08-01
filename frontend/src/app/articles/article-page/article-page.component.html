@@ -1,7 +1,9 @@
-<div class="container main">
-  <h2>{{ article.title }}</h2>
+<div class="container main" *ngIf="articleContent">
+  <h1>{{ article.title }}</h1>
   <p class="text-muted"> {{ article.source.name }}</p>
     <img [src]="article.urlToImage" alt="img" />
-    <p class="article-text">{{ article.content }}</p>
-    <p>Source: {{ article.url }}</p>
+    <div class="article-text">
+      <p *ngFor="let text of articleContent">{{ text }}</p>
+    </div>
+    <p>Source: <a [href]="article.url" target="_blank">{{ article.url }}</a></p>
 </div>
