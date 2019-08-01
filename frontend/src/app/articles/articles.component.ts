@@ -11,7 +11,6 @@ import { ActivatedRoute } from '@angular/router';
 export class ArticlesComponent implements OnInit {
   headlineArticles: Object[];
   articles: Object[];
-  typeParam: String;
   constructor(
     private articlesService: ArticlesService,
     private route: ActivatedRoute
@@ -19,16 +18,35 @@ export class ArticlesComponent implements OnInit {
 
   ngOnInit() {
     this.route.queryParams.subscribe(params => {
-      this.typeParam = params.type || history.state.type;
-      if (this.typeParam) {
-        this.articlesService.fetchArticleType(this.typeParam).subscribe(res => {
-          this.headlineArticles = res.articles.slice(0, 3);
-          this.articles = res.articles.slice(3);
-        });
+      const searchType = Object.keys(params)[0];
+      let data;
+      if (searchType) {
+        switch (searchType) {
+          case 'category':
+            this.articlesService
+              .fetchArticlesByType(params[searchType])
+              .subscribe(res => {
+                data = res.articles;
+                this.headlineArticles = data.slice(0, 3);
+        this.articles = data.slice(3);
+              });
+            break;
+          case 'sources':
+            this.articlesService
+              .fetchArticlesBySource(params[searchType])
+              .subscribe(res => {
+                data = res.articles;
+                this.headlineArticles = data.slice(0, 3);
+        this.articles = data.slice(3);
+              });
+          default:
+            break;
+        }
       } else {
         this.articlesService.fetchAllArticles().subscribe(res => {
-          this.headlineArticles = res.articles.slice(0, 3);
-          this.articles = res.articles.slice(3);
+          data = res.articles;
+          this.headlineArticles = data.slice(0, 3);
+          this.articles = data.slice(3);
         });
       }
     });
