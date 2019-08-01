@@ -1,0 +1,19 @@
+<!-- <div class="container main">
+  <div class="source-container" *ngFor="let source of sourceList | keyvalue">
+    <h3 class="text-muted">{{ source.key }}</h3>
+    <div>
+      <p *ngFor="let data of source.value">{{ data.name }}</p>
+    </div>
+  </div>
+</div> -->
+
+<div class="container main">
+  <ul class="list-group list-group-flush source" *ngFor="let source of sourceList | keyvalue">
+    <h3 class="text-muted">{{ source.key }}</h3>
+    <div class="source-names">
+      <li
+        *ngFor="let data of source.value" class="list-group-item bg-dark"
+        (click)="onClick($event)">{{ data.name }}</li>
+    </div>
+  </ul>
+</div>

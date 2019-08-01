@@ -1,0 +1,29 @@
+.main {
+  width: 75vw;
+
+  .source {
+    margin: 1.5%;
+    padding: 2%;
+
+    .source-names {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(17rem, 1fr));
+
+      li {
+        color: white;
+        cursor: pointer;
+        border: none;
+      }
+
+      li:hover {
+        opacity: 0.7;
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 819px) {
+  .main {
+    width: 90vw;
+  }
+}
