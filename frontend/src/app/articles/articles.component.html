@@ -1,6 +1,6 @@
 <div *ngIf="headlineArticles">
   <div class="headline-carousel">
-    <div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel">
+    <div id="carouselExampleCaptions" class="carousel slide carousel-main" data-ride="carousel">
       <ol class="carousel-indicators">
         <li data-target="#carouselExampleCaptions" data-slide-to="0" class="active"></li>
         <li data-target="#carouselExampleCaptions" data-slide-to="1"></li>
@@ -36,7 +36,7 @@
       </a>
     </div>
   </div>
-  <div class="container article-items">
+  <div class="article-items">
     <app-article-item *ngFor="let article of articles" [article]="article"></app-article-item>
   </div>
 </div>
