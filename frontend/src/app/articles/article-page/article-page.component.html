@@ -1,9 +1,23 @@
-<div class="container main" *ngIf="articleContent">
-  <h1>{{ article.title }}</h1>
-  <p class="text-muted"> {{ article.source.name }}</p>
-    <img [src]="article.urlToImage" alt="img" />
+<div class="container main">
+  <div *ngIf="scrapedArticle; else nativeArticle">
+    <h1>{{ scrapedArticle.title }}</h1>
+    <p class="text-muted"> {{ scrapedArticle.meta }}</p>
+    <img [src]="scrapedArticle.image" alt="img" />
     <div class="article-text">
-      <p *ngFor="let text of articleContent">{{ text }}</p>
+      <p *ngFor="let text of scrapedArticle.content">{{ text }}</p>
     </div>
-    <p>Source: <a [href]="article.url" target="_blank">{{ article.url }}</a></p>
+  </div>
+  <ng-template #nativeArticle>
+    <h1>{{ article.title }}</h1>
+    <p class="text-muted"> {{ article.source.name }}</p>
+    <img *ngIf="article.urlToImage; else placeholder" [src]="article.urlToImage" alt="img" />
+    <ng-template #placeholder>
+      <img src="https://semantic-ui.com/images/wireframe/square-image.png" alt="placeholder" />
+    </ng-template>
+    <div class="article-text">
+      <p>{{ article.content }}</p>
+    </div>
+    <p>Find out more at {{ article.source.name }}</p>
+  </ng-template>
+  <p>Source: <a class="source-url" [href]="url" target="_blank">{{ url }}</a></p>
 </div>
