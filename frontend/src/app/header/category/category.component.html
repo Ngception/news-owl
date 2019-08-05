@@ -1,4 +1,4 @@
-<div class="container main">
+<div class="container main bg-dark">
   <a *ngFor="let category of categories"
     [routerLink]="['/articles']"
     [queryParams]="{ category: category }">{{ category }}</a>
