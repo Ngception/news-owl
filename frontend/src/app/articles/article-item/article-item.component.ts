@@ -15,6 +15,12 @@ export class ArticleItemComponent implements OnInit {
 
   ngOnInit() {
     this.id = this.article.title.split(' ').join('_');
+    this.formatTitle();
   }
 
+  formatTitle() {
+    let source = this.article.source.name;
+    const regex = new RegExp(` - ${source}`, 'i');
+    this.article.title = this.article.title.replace(regex, '');
+  }
 }
