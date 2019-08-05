@@ -1,11 +1,12 @@
+import os
 import requests
-import re
-from bs4 import BeautifulSoup
+from scraper import scrape_data
 from flask import Flask, jsonify, request
 from flask_cors import CORS
 from newsapi import NewsApiClient
 app = Flask(__name__)
 CORS(app)
+NEWS_API = os.environ.get('NEWS_API')
 newsapi = NewsApiClient(api_key=NEWS_API)
 
 
@@ -36,9 +37,9 @@ def fetch_articles_by_source(source):
 
 @app.route('/articles/scrape', methods=['POST'])
 def scrape_article_data():
-    url = request.get_json()['url']
+    target = request.get_json()
+    url = target['url']
+    source_name = target['name']
     response = requests.get(url)
-    soup = BeautifulSoup(response.text, 'html.parser')
-    title = soup.find('h1')
-    content = soup.find('div', class_=re.compile("article|articlebody|content|story", re.I)).find_all('p')
-    return jsonify(title=title.get_text(), content=[tag.get_text() for tag in content])
+    article = scrape_data(response, source_name)
+    return jsonify(data=article)
