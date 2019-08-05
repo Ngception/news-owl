@@ -12,12 +12,24 @@ h2 {
 }
 
 img {
-  max-width: 100%;
+  width: 100%;
   margin: 0 auto;
+}
+
+.carousel-main {
+  z-index: 1;
 }
 
 .article-text {
   margin-top: 2.5%;
+}
+
+.source-url {
+  text-decoration: none;
+}
+
+.source-url:hover {
+  opacity: 0.7;
 }
 
 @media only screen and (min-width: 845px) {
